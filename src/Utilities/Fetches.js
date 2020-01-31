@@ -19,7 +19,7 @@ const Utilities = {
       }
     })
     .then(res => res.json())
-    .then(cats => console.log(cats));
+    .then(cats => cats);
   },
   fetchAdopters: () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
