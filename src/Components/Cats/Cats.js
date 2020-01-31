@@ -23,8 +23,7 @@ class Cats extends React.Component {
 
   handleAdoption = (ev) => {
     ev.preventDefault();
-    this.adoptCat();
-    this.getCurrentCat();
+    Utils.adoptCat();
   }
 
   
