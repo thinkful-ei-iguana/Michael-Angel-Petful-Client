@@ -37,6 +37,7 @@
 }
 
 .adoptionContainer {
+  margin-top: 10vh;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -52,4 +53,9 @@
 }
 .links p:after{
   content: ' |'
+}
+
+img {
+  max-width: 40vw;
+  margin: 20px;
 }

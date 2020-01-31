@@ -1,12 +1,32 @@
 import React from 'react';
+import config from '../../config';
 
 
 class Cats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      cat: {}
     }
+  }
+  componentDidMount() {
+    this.getCurrentCat();
+  }
+
+  getCurrentCat = () => {
+    return fetch(`${config.API_ADDRESS}/cats`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(cats => this.setCurrentCat(cats[0]));
+  }
+  setCurrentCat = (cat) => {
+    this.setState({
+      cat: cat
+    })
   }
 
   //when you hit the adopt button, you enter a queue and if no selection is made in 30 seconds,
@@ -16,10 +36,13 @@ class Cats extends React.Component {
   render() {
     return(
       <div className="Cats">
-        <div>
-          Cats PlaceHolder:
-        </div>
-         
+        <h3>{this.state.cat.name}</h3>
+         <img src={this.state.cat.imageURL} alt={this.state.cat.imageDescription}/>
+        <p>Sex: {this.state.cat.sex}</p>
+        <p>Age: {this.state.cat.age}</p>
+        <p>Breed: {this.state.cat.breed}</p>
+        <p>My Story: <br /><br /> 
+        {this.state.cat.story}</p>
         <button>Adopt Me!</button>
       </div>
     )
