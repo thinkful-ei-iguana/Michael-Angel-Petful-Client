@@ -3,7 +3,7 @@ import config from '../config';
 const Utilities = {
   ///// DOGS /////
   fetchDogs:  () => {
-    return fetch(`${config.REACT_APP_API_ADDRESS}/dogs`, {
+    fetch(`${config.REACT_APP_API_ADDRESS}/dogs`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json'
@@ -15,7 +15,7 @@ const Utilities = {
 
   ///// CATS /////
   fetchCats: () => {
-    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
+    fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json'
@@ -24,7 +24,7 @@ const Utilities = {
     .then(res => res.json());
   },
   adoptCat: () => {
-    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
+    fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
       method: 'DELETE',
       headers: {
         'content-type':'application/json'
@@ -33,7 +33,7 @@ const Utilities = {
   },
   ///// ADOPTERS /////
   fetchAdopters: () => {
-    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
+    fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
       method: 'GET',
       headers: {
         'content-type':'application/json'
