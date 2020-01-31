@@ -36,7 +36,7 @@ class Cats extends React.Component {
   }
 
   adoptCat = () => {
-    return fetch(`${config.API_ADDRESS}/cats`, {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
       method: 'DELETE',
       headers: {
         'content-type':'application/json'
