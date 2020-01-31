@@ -1,7 +1,6 @@
 import React from 'react';
 import Cats from '../Cats/Cats';
 import Dogs from '../Dogs/Dogs';
-import config from '../../config';
 import Utils from '../../Utilities/Fetches';
 
 
@@ -17,17 +16,11 @@ class Adopt extends React.Component {
   componentDidMount() {
     this.currentCat();
     this.currentDog();
-    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
-      method: 'POST',
-      headers: {
-        'content-type':'application/json'
-      },
-      body: JSON.stringify({name: 'You'}) 
-    });
+    Utils.addAdopter();
   }
 
   currentCat() {
-    return Utils.fetchCats().then(cats => this.setCat(cats[0]));
+    Utils.fetchCats().then(cats => this.setCat(cats[0]));
   }
 
   setCat = (cat) => {
@@ -46,12 +39,28 @@ class Adopt extends React.Component {
     })
   }
 
+  handleCatAdoption = (ev) => {
+    ev.preventDefault();
+    Utils.adoptCat();
+  }
+
+  handleDogAdoption = (ev) => {
+    ev.preventDefault();
+    Utils.adoptDog();
+  }
+
 
   render() {
     return(
       <div className="adoptionContainer">
-        <Cats cat={this.state.currentCat}/>
-        <Dogs />
+        <div>
+          <Cats cat={this.state.currentCat}/>
+          <button onClick={this.handleCatAdoption}>Adopt Me</button>
+        </div>
+        <div>
+          <Dogs />
+          <button onClick={this.handleDogAdoption}>Adopt Me</button>
+        </div>
       </div>
     )
   }

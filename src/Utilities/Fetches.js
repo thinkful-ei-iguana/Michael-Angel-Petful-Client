@@ -12,6 +12,14 @@ const Utilities = {
     .then(res => res.json())
     .then(dogs => dogs);
   },
+  adoptDog: () => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/dogs`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'application/json'
+      }
+    })
+  },
 
   ///// CATS /////
   fetchCats: () => {
@@ -41,6 +49,15 @@ const Utilities = {
     })
     .then(res => res.json())
     .then(person => console.log(person));
+  },
+  addAdopter: () => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
+      method: 'POST',
+      headers: {
+        'content-type':'application/json'
+      },
+      body: JSON.stringify({name: 'You'}) 
+    });
   }
 
 }
