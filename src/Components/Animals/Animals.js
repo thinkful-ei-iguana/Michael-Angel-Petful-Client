@@ -63,9 +63,19 @@ class Animals extends React.Component {
           <div className="types">
             <button onClick={this.selectCats}>Cats</button>
             <button onClick={this.selectDogs}>Dogs</button>
+            
           </div>
-          {this.state.showCats && <Cats cat={this.state.currentCat}/>}
-          {this.state.showDogs && <Dogs dog={this.state.currentDog}/>}
+          {this.state.showCats && 
+          <div>
+            <button className="prev">Previous</button>
+            <button className="next">Next</button><Cats cat={this.state.currentCat}/>
+          </div>}
+          {this.state.showDogs && 
+          <div>
+            <button className="prev">Previous</button>
+            <button className="next">Next</button>
+            <Dogs dog={this.state.currentDog}/>
+          </div>}
         </div>
       </div>
     )

@@ -42,7 +42,6 @@ class Cats extends React.Component {
         <p>Breed: {this.state.cat.breed}</p>
         <p>My Story: <br /><br /> 
         {this.state.cat.story}</p>
-        <button onClick={this.handleAdoption}>Adopt Me</button>
       </div>
     )
   }
