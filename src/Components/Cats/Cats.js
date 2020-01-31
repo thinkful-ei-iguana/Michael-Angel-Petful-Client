@@ -9,9 +9,8 @@ class Cats extends React.Component {
       cat: {}
     }
   }
-  componentDidMount() {
-    this.setCurrentCat(this.props.cat);
-  }
+  
+  
 
  
 
@@ -33,6 +32,7 @@ class Cats extends React.Component {
   //Have an array of ghost names and in a random number of seconds add a random name to the queue
 
   render() {
+    this.setCurrentCat(this.props.cat);
     return(
       <div className="Cats">
         <h3>{this.state.cat.name}</h3>
