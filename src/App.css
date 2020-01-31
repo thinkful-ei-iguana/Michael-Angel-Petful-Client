@@ -54,6 +54,11 @@
   padding-bottom: 10vh;
 }
 
+.submissionForm {
+  display: flex;
+  flex-direction: column;
+}
+
 .links {
   display: flex;
   flex-direction: row;
