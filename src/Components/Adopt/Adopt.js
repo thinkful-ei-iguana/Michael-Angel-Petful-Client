@@ -19,9 +19,8 @@ class Adopt extends React.Component {
       headers: {
         'content-type':'application/json'
       },
-      body: JSON.stringify({name: 'You'})
-        
-    })
+      body: JSON.stringify({name: 'You'}) 
+    });
   }
 
   render() {
