@@ -1,5 +1,4 @@
 import React from 'react';
-import config from '../../config';
 import Utils from '../../Utilities/Fetches';
 
 
@@ -15,8 +14,9 @@ class Cats extends React.Component {
   }
 
   getCurrentCat = () => {
-    Utils.fetchCats().then(cats => this.setCurrentCat(cats[0]));
+    this.setCurrentCat(this.props.cat);
   }
+
   setCurrentCat = (cat) => {
     this.setState({
       cat: cat
@@ -30,12 +30,7 @@ class Cats extends React.Component {
   }
 
   adoptCat = () => {
-    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
-      method: 'DELETE',
-      headers: {
-        'content-type':'application/json'
-      }
-    })
+    Utils.adoptCat();
   }
 
   //when you hit the adopt button, you enter a queue and if no selection is made in 30 seconds,

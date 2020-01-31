@@ -2,6 +2,7 @@ import React from 'react';
 import Cats from '../Cats/Cats';
 import Dogs from '../Dogs/Dogs';
 import config from '../../config';
+import Utils from '../../Utilities/Fetches';
 
 
 class Adopt extends React.Component {
@@ -14,6 +15,8 @@ class Adopt extends React.Component {
   }
 
   componentDidMount() {
+    this.setCat();
+    this.setDog();
     return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
       method: 'POST',
       headers: {
@@ -23,10 +26,31 @@ class Adopt extends React.Component {
     });
   }
 
+  currentCat = () => {
+    Utils.fetchCats().then(cats => this.setCat(cats[0]));
+  }
+
+  setCat = (cat) => {
+    this.setState({
+      currentCat: cat
+    })
+  }
+
+  currentDog = () => {
+    Utils.fetchDogs().then(dogs => this.setDog(dogs[0]))
+  }
+
+  setDog = (dog) => {
+    this.setState({
+      currentDog: dog
+    })
+  }
+
+
   render() {
     return(
       <div className="adoptionContainer">
-        <Cats />
+        <Cats cat={this.state.currentCat}/>
         <Dogs />
       </div>
     )
