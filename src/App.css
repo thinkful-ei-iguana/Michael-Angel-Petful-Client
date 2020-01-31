@@ -42,3 +42,14 @@
   justify-content: space-evenly;
   width: 90vw;
 }
+
+.links {
+  display: flex;
+  flex-direction: row;
+}
+.links p{
+  margin: 5px;
+}
+.links p:after{
+  content: ' |'
+}

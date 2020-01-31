@@ -17,8 +17,9 @@ class Header extends React.Component {
           <h1>Petful</h1>
         </Link>
         <div className="links">
-          <Link to='/adopt'>Adopt</Link>
-          <Link to='/add'>Add Animal</Link>
+          <Link to='/about'><p>About Adoption</p></Link>
+          <Link to='/adopt'><p>Adopt</p></Link>
+          <Link to='/add'><p>Add Animal</p></Link>
         </div>
       </div>
     )

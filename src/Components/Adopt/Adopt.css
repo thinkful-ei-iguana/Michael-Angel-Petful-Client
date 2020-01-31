@@ -1,6 +1,6 @@
-.Cats {
+.Cats, .Dogs {
   display: flex;
   flex-direction: column;
   min-height: 70vh;
-  
 }
+

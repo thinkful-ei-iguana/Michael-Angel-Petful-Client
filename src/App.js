@@ -3,6 +3,7 @@ import Header from './Components/Header/Header';
 import Landing from './Components/Landing/Landing';
 import Adopt from './Components/Adopt/Adopt';
 import Add from './Components/Add-Animal/AddAnimalForm';
+import About from './Components/About/About';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={Landing} />
+        <Route path='/about' component={About} />
         <Route path='/adopt' component={Adopt} />
         <Route path='/add' component={Add} />
       </Switch>
