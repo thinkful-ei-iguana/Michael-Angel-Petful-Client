@@ -1,6 +1,7 @@
 import React from 'react';
 import Cats from '../Cats/Cats';
 import Dogs from '../Dogs/Dogs';
+import config from '../../config';
 
 
 class Adopt extends React.Component {
@@ -10,6 +11,17 @@ class Adopt extends React.Component {
       currentCat: {},
       currentDog: {}
     }
+  }
+
+  componentDidMount() {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/adpoters`, {
+      method: 'POST',
+      headers: {
+        'content-type':'application/json'
+      },
+      body: JSON.stringify({name: 'You'})
+        
+    })
   }
 
   render() {

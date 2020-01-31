@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import config from '../../config';
 
 
 class Header extends React.Component {
@@ -8,6 +9,25 @@ class Header extends React.Component {
     this.state = {
       person: {}
     }
+  }
+  componentDidMount() {
+    this.currentAdopter();
+  }
+  currentAdopter = () => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
+      method: 'GET',
+      headers: {
+        'content-type':'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(person => this.setPerson(person[0]));
+  }
+
+  setPerson = (person) => {
+    this.setState({
+      person: person
+    })
   }
 
   render() {
