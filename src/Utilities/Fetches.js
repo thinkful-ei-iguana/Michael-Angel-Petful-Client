@@ -21,8 +21,7 @@ const Utilities = {
         'content-type': 'application/json'
       }
     })
-    .then(res => res.json())
-    .then(cats => cats);
+    .then(res => res.json());
   },
   adoptCat: () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {

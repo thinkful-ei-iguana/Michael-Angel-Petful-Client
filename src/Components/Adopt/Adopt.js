@@ -26,16 +26,14 @@ class Adopt extends React.Component {
     });
   }
 
-  async currentCat() {
-    let cats = await Utils.fetchCats();
-    console.log(cats);
-    this.setCat(cats[0]);
+  currentCat() {
+    Utils.fetchCats().then(cats => this.setCat(cats[0]));
   }
 
   setCat = (cat) => {
     this.setState({
       currentCat: cat
-    }, console.log(this.state.currentCat))
+    });
   }
 
   currentDog = () => {
