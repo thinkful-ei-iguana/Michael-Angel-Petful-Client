@@ -14,6 +14,7 @@ class Cats extends React.Component {
   }
 
   getCurrentCat = () => {
+    console.log(this.props.cat)
     this.setCurrentCat(this.props.cat);
   }
 

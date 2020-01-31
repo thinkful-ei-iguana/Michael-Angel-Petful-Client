@@ -27,7 +27,9 @@ class Adopt extends React.Component {
   }
 
   currentCat = () => {
-    Utils.fetchCats().then(cats => this.setCat(cats[0]));
+    Utils.fetchCats().then(cats => {
+      console.log(cats[0]);
+      this.setCat(cats[0])});
   }
 
   setCat = (cat) => {
