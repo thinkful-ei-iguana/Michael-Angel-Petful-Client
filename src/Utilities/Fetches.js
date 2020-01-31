@@ -1,6 +1,7 @@
 import config from '../config';
 
 const Utilities = {
+  ///// DOGS /////
   fetchDogs:  () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/dogs`, {
       method: 'GET',
@@ -11,6 +12,8 @@ const Utilities = {
     .then(res => res.json())
     .then(dogs => console.log(dogs));
   },
+
+  ///// CATS /////
   fetchCats: () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
       method: 'GET',
@@ -21,6 +24,15 @@ const Utilities = {
     .then(res => res.json())
     .then(cats => cats);
   },
+  adoptCat: () => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'application/json'
+      }
+    })
+  },
+  ///// ADOPTERS /////
   fetchAdopters: () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
       method: 'GET',
