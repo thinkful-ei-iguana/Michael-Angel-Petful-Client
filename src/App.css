@@ -45,6 +45,14 @@
   width: 90vw;
   padding-bottom: 10vh;
 }
+.allAnimals {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 90vw;
+  padding-bottom: 10vh;
+}
 
 .links {
   display: flex;
@@ -59,6 +67,7 @@
 
 img {
   max-width: 40vw;
+  max-height: 40vh;
   margin: 20px;
   border-radius: 5px;
   border: 3px solid white;
@@ -66,7 +75,7 @@ img {
 
 button {
   background-color: rgba(255,255,255,0.2);
-  font-size: 24px;
+  font-size: calc(10px + 2vmin);
   border-radius: 5px;
   border: 3px solid rgba(255,255,255,0.4);
   color: white;
