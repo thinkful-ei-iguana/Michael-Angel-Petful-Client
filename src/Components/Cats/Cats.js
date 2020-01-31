@@ -29,6 +29,21 @@ class Cats extends React.Component {
     })
   }
 
+  handleAdoption = (ev) => {
+    ev.preventDefault();
+    this.adoptCat();
+    this.getCurrentCat();
+  }
+
+  adoptCat = () => {
+    return fetch(`${config.API_ADDRESS}/cats`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'application/json'
+      }
+    })
+  }
+
   //when you hit the adopt button, you enter a queue and if no selection is made in 30 seconds,
   //the person is removed from the queue.
   //Have an array of ghost names and in a random number of seconds add a random name to the queue
@@ -43,7 +58,7 @@ class Cats extends React.Component {
         <p>Breed: {this.state.cat.breed}</p>
         <p>My Story: <br /><br /> 
         {this.state.cat.story}</p>
-        <button>Adopt Me!</button>
+        <button onClick={this.handleAdoption}>Adopt Me</button>
       </div>
     )
   }

@@ -9,11 +9,12 @@ class Dogs extends React.Component {
       dog: {}
     }
   }
+
   componentDidMount() {
-    this.getCurrentCat();
+    this.getCurrentDog();
   }
 
-  getCurrentCat = () => {
+  getCurrentDog = () => {
     return fetch(`${config.API_ADDRESS}/dogs`, {
       method: 'GET',
       headers: {
@@ -30,6 +31,21 @@ class Dogs extends React.Component {
     })
   }
 
+  handleAdoption = (ev) => {
+    ev.preventDefault();
+    this.adoptDog();
+    this.getCurrentDog();
+  }
+
+  adoptDog = () => {
+    return fetch(`${config.API_ADDRESS}/dogs`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'application/json'
+      }
+    })
+  }
+
   render() {
     return(
       <div className="Dogs">
@@ -40,7 +56,7 @@ class Dogs extends React.Component {
         <p>Breed: {this.state.dog.breed}</p>
         <p>My Story: <br /><br /> 
         {this.state.dog.story}</p>
-        <button>Adopt Me</button>
+        <button onClick={this.handleAdoption}>Adopt Me</button>
       </div>
     )
   }

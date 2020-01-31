@@ -13,7 +13,8 @@ class About extends React.Component {
   render() {
     return(
       <div>
-       About the Adoption Process:
+       <h3>About the Adoption Process:</h3>
+       <p>It's as easy as point and click! If you see an animal that you want, press the "Adopt Me" button!</p>
       </div>
     )
   }
