@@ -35,7 +35,7 @@ class Adopt extends React.Component {
   setCat = (cat) => {
     this.setState({
       currentCat: cat
-    })
+    }, console.log(this.state.currentCat))
   }
 
   currentDog = () => {
