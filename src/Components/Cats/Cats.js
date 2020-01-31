@@ -14,7 +14,7 @@ class Cats extends React.Component {
   }
 
   getCurrentCat = () => {
-    return fetch(`${config.API_ADDRESS}/cats`, {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json'

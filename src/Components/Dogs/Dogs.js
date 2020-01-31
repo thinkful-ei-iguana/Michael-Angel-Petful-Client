@@ -38,7 +38,7 @@ class Dogs extends React.Component {
   }
 
   adoptDog = () => {
-    return fetch(`${config.API_ADDRESS}/dogs`, {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/dogs`, {
       method: 'DELETE',
       headers: {
         'content-type':'application/json'
