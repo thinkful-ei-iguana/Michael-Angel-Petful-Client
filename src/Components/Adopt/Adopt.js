@@ -12,10 +12,13 @@ class Adopt extends React.Component {
       currentDog: {}
     }
   }
-
-  componentDidMount() {
+  
+  componentWillMount() {
     this.currentCat();
     this.currentDog();
+  }
+
+  componentDidMount() {
     Utils.addAdopter();
   }
 
