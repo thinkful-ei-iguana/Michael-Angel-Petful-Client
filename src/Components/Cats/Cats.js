@@ -10,13 +10,10 @@ class Cats extends React.Component {
     }
   }
   componentDidMount() {
-    this.getCurrentCat();
-  }
-
-  getCurrentCat = () => {
-    console.log(this.props.cat)
     this.setCurrentCat(this.props.cat);
   }
+
+ 
 
   setCurrentCat = (cat) => {
     this.setState({
@@ -30,9 +27,7 @@ class Cats extends React.Component {
     this.getCurrentCat();
   }
 
-  adoptCat = () => {
-    Utils.adoptCat();
-  }
+  
 
   //when you hit the adopt button, you enter a queue and if no selection is made in 30 seconds,
   //the person is removed from the queue.
