@@ -15,7 +15,6 @@ class Dogs extends React.Component {
   }
 
   getCurrentDog = () => {
-    console.log(config.REACT_APP_API_ADDRESS);
     return fetch(`${config.REACT_APP_API_ADDRESS}/dogs`, {
       method: 'GET',
       headers: {

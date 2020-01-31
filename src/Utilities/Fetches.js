@@ -10,7 +10,7 @@ const Utilities = {
       }
     })
     .then(res => res.json())
-    .then(dogs => console.log(dogs));
+    .then(dogs => dogs);
   },
 
   ///// CATS /////
