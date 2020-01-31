@@ -15,8 +15,8 @@ class Adopt extends React.Component {
   }
 
   componentDidMount() {
-    this.setCat();
-    this.setDog();
+    this.currentCat();
+    this.currentDog();
     return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
       method: 'POST',
       headers: {
