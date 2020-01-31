@@ -14,7 +14,7 @@ class Adopt extends React.Component {
   }
 
   componentDidMount() {
-    return fetch(`${config.REACT_APP_API_ADDRESS}/adpoters`, {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
       method: 'POST',
       headers: {
         'content-type':'application/json'

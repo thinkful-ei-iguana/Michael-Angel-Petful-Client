@@ -45,6 +45,7 @@
   width: 90vw;
   padding-bottom: 10vh;
 }
+
 .allAnimals {
   margin-top: 10vh;
   display: flex;
@@ -52,6 +53,11 @@
   justify-content: space-evenly;
   width: 90vw;
   padding-bottom: 10vh;
+}
+
+.viewerContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .submissionForm {

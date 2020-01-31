@@ -1,5 +1,6 @@
 import React from 'react';
 import config from '../../config';
+import Utils from '../../Utilities/Fetches';
 
 
 class Cats extends React.Component {
@@ -14,14 +15,7 @@ class Cats extends React.Component {
   }
 
   getCurrentCat = () => {
-    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(cats => this.setCurrentCat(cats[0]));
+    Utils.fetchCats().then(cats => this.setCurrentCat(cats[0]));
   }
   setCurrentCat = (cat) => {
     this.setState({
