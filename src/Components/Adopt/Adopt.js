@@ -23,7 +23,7 @@ class Adopt extends React.Component {
     this.addAdopter();
   }
   
-  startTimer = () => setInterval(this.nextAdopter(), 30000)
+  startTimer = () => setInterval(this.nextAdopter(), 3000)
 
   nextAdopter = () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
@@ -35,7 +35,7 @@ class Adopt extends React.Component {
   }
 
   addAdopter = () => {
-    if(this.state.adopting !== false) {
+    if(this.state.adopting === false) {
       return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
         method: 'POST',
         headers: {
@@ -48,7 +48,7 @@ class Adopt extends React.Component {
       })
       .then(this.setAdopting())
       .then(this.startTimer());
-    } else return;
+    }
   }
 
 
