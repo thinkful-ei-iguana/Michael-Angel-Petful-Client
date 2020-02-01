@@ -22,6 +22,7 @@ class Adopt extends React.Component {
     this.selectDogs();
   }
 
+  // Get all //
   getCats = () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
       method: 'GET',
@@ -45,6 +46,7 @@ class Adopt extends React.Component {
     .then(dogs => this.addDogs(dogs));
   }
 
+  //Add to state//
   addCats = (cats) => {
     this.setState({
       cats: cats
@@ -56,7 +58,7 @@ class Adopt extends React.Component {
       dogs: dogs
     })
   }
-
+  // set current animal //
   selectCats = () => {
     this.setState({
       currentCat: this.state.cats[0]
@@ -68,12 +70,20 @@ class Adopt extends React.Component {
     })
   }
 
+  //click handlers
   handleCatAdoption = (ev) => {
     ev.preventDefault();
     this.adoptCat();
     this.getCats();
   }
 
+  handleDogAdoption = (ev) => {
+    ev.preventDefault();
+    this.adoptDog();
+    this.getDogs();
+  }
+
+  //adopt fetches
   adoptCat = () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
       method: 'DELETE',
@@ -83,10 +93,15 @@ class Adopt extends React.Component {
     })
   }
 
-  handleDogAdoption = (ev) => {
-    ev.preventDefault();
-    Utils.adoptDog();
+  adoptDog = () => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/dogs`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'application/json'
+      }
+    })
   }
+
 
 
   render() {
