@@ -23,18 +23,7 @@ class Adopt extends React.Component {
     this.addAdopter();
   }
   
-  startTimer = () => {
-    setInterval(() => this.nextAdopter(), 3000)
-  }
-
-  nextAdopter = () => {
-    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
-      method: 'DELETE',
-      headers: {
-        'content-type':'application/json'
-      }
-    })
-  }
+  
 
   addAdopter = () => {
     if(this.state.adopting === true) {
