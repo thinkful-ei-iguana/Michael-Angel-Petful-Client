@@ -18,6 +18,8 @@ class Adopt extends React.Component {
   componentDidMount() {
     this.getCats();
     this.getDogs();
+    this.selectCats();
+    this.selectDogs();
   }
 
   getCats = () => {

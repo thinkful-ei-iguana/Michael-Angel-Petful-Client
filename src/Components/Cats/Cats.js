@@ -1,30 +1,13 @@
 import React from 'react';
-import Utils from '../../Utilities/Fetches';
 
 
 class Cats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cat: {}
     }
   }
-  
-  
-
  
-
-  setCurrentCat = (cat) => {
-    this.setState({
-      cat: cat
-    })
-  }
-
-  handleAdoption = (ev) => {
-    ev.preventDefault();
-    Utils.adoptCat();
-  }
-
   
 
   //when you hit the adopt button, you enter a queue and if no selection is made in 30 seconds,
@@ -32,16 +15,15 @@ class Cats extends React.Component {
   //Have an array of ghost names and in a random number of seconds add a random name to the queue
 
   render() {
-    this.setCurrentCat(this.props.cat);
     return(
       <div className="Cats">
-        <h3>{this.state.cat.name}</h3>
-         <img src={this.state.cat.imageURL} alt={this.state.cat.imageDescription}/>
-        <p>Sex: {this.state.cat.sex}</p>
-        <p>Age: {this.state.cat.age}</p>
-        <p>Breed: {this.state.cat.breed}</p>
+        <h3>{this.props.cat.name}</h3>
+         <img src={this.props.cat.imageURL} alt={this.props.cat.imageDescription}/>
+        <p>Sex: {this.props.cat.sex}</p>
+        <p>Age: {this.props.cat.age}</p>
+        <p>Breed: {this.props.cat.breed}</p>
         <p>My Story: <br /><br /> 
-        {this.state.cat.story}</p>
+        {this.props.cat.story}</p>
       </div>
     )
   }
