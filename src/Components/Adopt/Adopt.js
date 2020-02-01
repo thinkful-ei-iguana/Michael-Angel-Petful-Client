@@ -2,6 +2,7 @@ import React from 'react';
 import Cats from '../Cats/Cats';
 import Dogs from '../Dogs/Dogs';
 import Utils from '../../Utilities/Fetches';
+import config from '../../config';
 
 
 class Adopt extends React.Component {
@@ -15,7 +16,7 @@ class Adopt extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getCats();
     this.getDogs();
     this.selectCats();
@@ -23,11 +24,25 @@ class Adopt extends React.Component {
   }
 
   getCats = () => {
-    Utils.fetchCats().then(cats => this.addCats(cats));
+    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(cats => this.addCats(cats));
   }
 
   getDogs = () => {
-    Utils.fetchDogs().then(dogs => this.addDogs(dogs));
+    return fetch(`${config.REACT_APP_API_ADDRESS}/dogs`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(dogs => this.addDogs(dogs));
   }
 
   addCats = (cats) => {
