@@ -19,7 +19,6 @@ class Adopt extends React.Component {
   componentWillMount() {
     this.getCats();
     this.getDogs();
-    this.selectCats();
     this.selectDogs();
   }
 
@@ -31,7 +30,8 @@ class Adopt extends React.Component {
       }
     })
     .then(res => res.json())
-    .then(cats => this.addCats(cats));
+    .then(cats => this.addCats(cats))
+    .then( () => this.selectCats(this.state.cats[0]));
   }
 
   getDogs = () => {
@@ -80,6 +80,9 @@ class Adopt extends React.Component {
 
 
   render() {
+    let cat = this.state.currentCat;
+    console.log(cat);
+
     return(
       <div className="adoptionContainer">
         <div>
