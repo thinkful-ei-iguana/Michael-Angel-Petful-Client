@@ -31,7 +31,7 @@ class Adopt extends React.Component {
     })
     .then(res => res.json())
     .then(cats => this.addCats(cats))
-    .then( () => this.selectCats(this.state.cats[0]));
+    .then(() => this.selectCats(this.state.cats[0]));
   }
 
   getDogs = () => {
@@ -70,7 +70,17 @@ class Adopt extends React.Component {
 
   handleCatAdoption = (ev) => {
     ev.preventDefault();
-    Utils.adoptCat();
+    this.adoptCat();
+    this.getCats();
+  }
+
+  adoptCat = () => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/cats`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'application/json'
+      }
+    })
   }
 
   handleDogAdoption = (ev) => {
