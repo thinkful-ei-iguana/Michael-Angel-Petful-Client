@@ -1,7 +1,6 @@
 import React from 'react';
 import Cats from '../Cats/Cats';
 import Dogs from '../Dogs/Dogs';
-import Utils from '../../Utilities/Fetches';
 import config from '../../config';
 
 
@@ -12,14 +11,46 @@ class Adopt extends React.Component {
         cats: {},
         dogs: {},
         currentCat: {},
-        currentDog: {}
+        currentDog: {},
+        adopting: false,
+        turnToAdopt: false
     }
   }
 
   componentWillMount() {
     this.getCats();
     this.getDogs();
+    this.addAdopter();
   }
+  
+  startTimer = () => setInterval(this.nextAdopter(), 30000)
+
+  nextAdopter = () => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'application/json'
+      }
+    })
+  }
+
+  addAdopter = () => {
+    if(this.state.adopting !== false) {
+      return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
+        method: 'POST',
+        headers: {
+          'content-type':'application/json'
+        },
+        body: JSON.stringify({
+          name: 'You', 
+          adopting: false
+        }) 
+      })
+      .then(this.setAdopting())
+      .then(this.startTimer());
+    } else return;
+  }
+
 
   // Get all //
   getCats = () => {
@@ -56,6 +87,11 @@ class Adopt extends React.Component {
   addDogs = (dogs) => {
     this.setState({
       dogs: dogs
+    })
+  }
+  setAdopting = () => {
+    this.setState({
+      adopting: true
     })
   }
   // set current animal //
@@ -105,9 +141,6 @@ class Adopt extends React.Component {
 
 
   render() {
-    let cat = this.state.currentCat;
-    console.log(cat);
-
     return(
       <div className="adoptionContainer">
         <div>
