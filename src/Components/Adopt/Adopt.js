@@ -115,7 +115,7 @@ class Adopt extends React.Component {
           <button onClick={this.handleCatAdoption}>Adopt Me</button>
         </div>
         <div>
-          <Dogs />
+          <Dogs dog={this.state.currentDog}/>
           <button onClick={this.handleDogAdoption}>Adopt Me</button>
         </div>
       </div>
