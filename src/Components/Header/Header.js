@@ -12,7 +12,9 @@ class Header extends React.Component {
   }
   componentDidMount() {
     this.currentAdopter();
+    this.startTimer();
   }
+
   currentAdopter = () => {
     return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
       method: 'GET',
@@ -27,6 +29,19 @@ class Header extends React.Component {
   setPerson = (person) => {
     this.setState({
       person: person
+    })
+  }
+  
+  startTimer = () => {
+    setInterval(() => this.nextAdopter(), 3000)
+  }
+
+  nextAdopter = () => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'application/json'
+      }
     })
   }
 
