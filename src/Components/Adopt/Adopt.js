@@ -19,7 +19,6 @@ class Adopt extends React.Component {
   componentWillMount() {
     this.getCats();
     this.getDogs();
-    this.selectDogs();
   }
 
   // Get all //
