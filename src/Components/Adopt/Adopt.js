@@ -43,7 +43,8 @@ class Adopt extends React.Component {
       }
     })
     .then(res => res.json())
-    .then(dogs => this.addDogs(dogs));
+    .then(dogs => this.addDogs(dogs))
+    .then(() => this.selectDogs(this.state.dogs[0]));
   }
 
   //Add to state//
