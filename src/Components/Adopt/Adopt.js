@@ -8,37 +8,46 @@ class Adopt extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentCat: {},
-      currentDog: {}
+        cats: {},
+        dogs: {},
+        currentCat: {},
+        currentDog: {}
     }
-  }
-  
-  componentWillMount() {
-    this.currentCat();
-    this.currentDog();
   }
 
   componentDidMount() {
-    Utils.addAdopter();
+    this.getCats();
+    this.getDogs();
   }
 
-  currentCat() {
-    Utils.fetchCats().then(cats => this.setCat(cats[0]));
+  getCats = () => {
+    Utils.fetchCats().then(cats => this.addCats(cats));
   }
 
-  setCat = (cat) => {
+  getDogs = () => {
+    Utils.fetchDogs().then(dogs => this.addDogs(dogs));
+  }
+
+  addCats = (cats) => {
     this.setState({
-      currentCat: cat
-    });
+      cats: cats
+    })
   }
 
-  currentDog = () => {
-    Utils.fetchDogs().then(dogs => this.setDog(dogs[0]))
-  }
-
-  setDog = (dog) => {
+  addDogs = (dogs) => {
     this.setState({
-      currentDog: dog
+      dogs: dogs
+    })
+  }
+
+  selectCats = () => {
+    this.setState({
+      currentCat: this.state.cats[0]
+    })
+  }
+  selectDogs = () => {
+    this.setState({
+      currentDog: this.state.dogs[0]
     })
   }
 
