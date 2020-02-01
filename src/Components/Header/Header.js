@@ -31,9 +31,12 @@ class Header extends React.Component {
       person: person
     })
   }
-  
+
   startTimer = () => {
-    setInterval(() => this.nextAdopter(), 3000)
+    setInterval(() => {
+      this.nextAdopter();
+      this.currentAdopter();
+    }, 30000)
   }
 
   nextAdopter = () => {
