@@ -15,35 +15,35 @@ class Adopt extends React.Component {
         adopting: false,
         turnToAdopt: false,
         name: '',
+        myName: '',
         showForm: false,
         showButton: true,
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getCats();
     this.getDogs();
-    this.addAdopter();
   }
   
   
 
-  addAdopter = () => {
-    if(this.state.adopting === true) {
-      return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
-        method: 'POST',
-        headers: {
-          'content-type':'application/json'
-        },
-        body: JSON.stringify({
-          name: 'You', 
-          adopting: false
-        }) 
-      })
-      .then(this.setAdopting())
-      .then(this.startTimer());
-    }
-  }
+  // addAdopter = () => {
+  //   if(this.state.adopting === true) {
+  //     return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'content-type':'application/json'
+  //       },
+  //       body: JSON.stringify({
+  //         name: 'You', 
+  //         adopting: false
+  //       }) 
+  //     })
+  //     .then(this.setAdopting())
+  //     .then(this.startTimer());
+  //   }
+  // }
 
 
   // Get all //
@@ -139,16 +139,25 @@ class Adopt extends React.Component {
       headers: {
         'content-type':'application/json'
       },
-      body: JSON.stringify({ name: adopter })
+      body: JSON.stringify({ 
+        name: adopter,
+        adopting: false })
     })
   }
 
   handleAddName = async() => {
+    let myname = this.state.name;
+    console.log(myname);
+    this.setState({
+      myName: myname
+    });
+
     await this.addAdopter(this.state.name);
+
     this.setState({
       showButton: true,
       showForm: false
-    })
+    });
   }
 
   setName = (ev) => {
@@ -174,7 +183,7 @@ class Adopt extends React.Component {
         {this.state.showButton && <button onClick={this.joinQueue}>Adopt a Pet</button>}
         {this.state.showForm && <form onSubmit={this.handleAddName}>
           <label>Name:</label>
-          <input name="inputName" onSubmit={this.setName} required></input>
+          <input name="inputName" onChange={this.setName} required></input>
           <button type="submit">Join Adoption Queue</button>
         </form>}
 
