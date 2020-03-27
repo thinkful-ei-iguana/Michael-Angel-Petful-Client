@@ -13,7 +13,10 @@ class Adopt extends React.Component {
         currentCat: {},
         currentDog: {},
         adopting: false,
-        turnToAdopt: false
+        turnToAdopt: false,
+        name: '',
+        showForm: false,
+        showButton: true,
     }
   }
 
@@ -85,6 +88,7 @@ class Adopt extends React.Component {
       adopting: true
     })
   }
+
   // set current animal //
   selectCats = () => {
     this.setState({
@@ -129,19 +133,66 @@ class Adopt extends React.Component {
     })
   }
 
+  addAdopter = (adopter) => {
+    return fetch(`${config.REACT_APP_API_ADDRESS}/adopters`, {
+      method: 'POST',
+      headers: {
+        'content-type':'application/json'
+      },
+      body: JSON.stringify({ name: adopter })
+    })
+  }
+
+  handleAddName = async() => {
+    await this.addAdopter(this.state.name);
+    this.setState({
+      showButton: true,
+      showForm: false
+    })
+  }
+
+  setName = (ev) => {
+    this.setState({
+      name: ev.target.value
+    })
+  }
+
+  joinQueue = ev => {
+    ev.preventDefault();
+    this.setState({
+      showForm: true,
+      showButton: false,
+    })
+  }
+
+
 
 
   render() {
     return(
-      <div className="adoptionContainer">
-        <div>
-          <Cats cat={this.state.currentCat}/>
-          <button onClick={this.handleCatAdoption}>Adopt Me</button>
+      <div className="adoptionPage">
+        {this.state.showButton && <button onClick={this.joinQueue}>Adopt a Pet</button>}
+        {this.state.showForm && <form onSubmit={this.handleAddName}>
+          <label>Name:</label>
+          <input name="inputName" onSubmit={this.setName} required></input>
+          <button type="submit">Join Adoption Queue</button>
+        </form>}
+
+        <div className="adoptionContainer">
+          
+          
+          <div>
+            <Cats cat={this.state.currentCat}/>
+            <button onClick={this.handleCatAdoption}>Adopt Me</button>
+          </div>
+
+          <div>
+            <Dogs dog={this.state.currentDog}/>
+            <button onClick={this.handleDogAdoption}>Adopt Me</button>
+          </div>
+
         </div>
-        <div>
-          <Dogs dog={this.state.currentDog}/>
-          <button onClick={this.handleDogAdoption}>Adopt Me</button>
-        </div>
+
       </div>
     )
   }

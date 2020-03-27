@@ -2,7 +2,6 @@
   "version": 2,
   "name": "michael-angel-petful",
   "routes": [
-      { "handle": "filesystem" },
-      { "src": "/.*", "dest": "/index.html" }
+      { "src": ".*", "dest": "/index.html" }
   ]
 }

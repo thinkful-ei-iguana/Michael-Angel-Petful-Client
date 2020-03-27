@@ -66,7 +66,7 @@ class Animals extends React.Component {
             
           </div>
           {this.state.showCats && 
-          <div>
+          <div className="navButtons">
             <button className="prev">Previous</button>
             <button className="next">Next</button><Cats cat={this.state.currentCat}/>
           </div>}

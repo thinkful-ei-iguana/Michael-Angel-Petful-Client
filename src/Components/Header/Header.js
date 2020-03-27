@@ -49,12 +49,20 @@ class Header extends React.Component {
   }
 
   render() {
+    let adopting;
+    if (this.state.person === [] || !this.state.person || this.state.person === undefined) {
+      adopting = <div className="adoptionQueue">Waiting for adopter.</div>;
+    }
+    else {
+      adopting = <div className="adoptionQueue">Now adopting: {this.state.person.name}</div>;
+    }
+
     return(
       <div className="header">
         <Link to='/'>
           <h1>Petful</h1>
         </Link>
-        <div className="adoptionQueue">Now adopting: {this.state.person.name}</div>
+        {adopting}
         <div className="links">
           <Link to='/about'><p>About Adoption</p></Link>
           <Link to='/animals'><p>Our Animals</p></Link>
